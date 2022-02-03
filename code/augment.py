@@ -39,9 +39,11 @@ def gen_eda(train_orig, output_file, alpha, num_aug=9):
 
     print("正在使用EDA生成增强语句...")
     for i, line in enumerate(lines):
-        parts = line[:-1].split('\t')    #使用[:-1]是把\n去掉了
-        label = parts[0]
-        sentence = parts[1]
+        parts = line[:-1]
+        print(line.split(" ")[0])
+        print(line.split(" ")[1])
+        label = "0"
+        sentence = parts
         aug_sentences = eda(sentence, alpha_sr=alpha, alpha_ri=alpha, alpha_rs=alpha, p_rd=alpha, num_aug=num_aug)
         for aug_sentence in aug_sentences:
             writer.write(label + "\t" + aug_sentence + '\n')
